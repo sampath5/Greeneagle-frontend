@@ -1,0 +1,31 @@
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    overflow: hidden;
+}
+
+.img-wrap{
+  span {
+      position: absolute;
+      top: 3%;
+      left: 5%;
+      font-size: 20px;      
+    }
+}
+
+.img-wrap:hover{
+    span:hover {
+        position: absolute;
+        top: 3%;
+        left: 5%;
+        color: pink;
+        font-size: 25px;
+      }
+  }
+
+
+  .card-image {
+    max-width: 300px;
+    height: 200px;
+  }

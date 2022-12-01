@@ -1,0 +1,85 @@
+<app-navigation></app-navigation>
+
+<div style="align-items: center;" *ngIf="this.cartCount<=0"><h3>Cart is Empty</h3></div>
+<div class="shopping-cart section mt-3" *ngIf="this.cartCount>0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Shopping Summery -->
+                <table class="table shopping-summery">
+                    <thead>
+                        <tr class="main-hading">
+                            <th>PRODUCT</th>
+                            <th>NAME</th>
+                            <th class="text-center">UNIT PRICE</th>
+                            <th class="text-center">QUANTITY</th>
+                            <th class="text-center">TOTAL</th>
+                            <th class="text-center">
+                                <mat-icon>restore_from_trash</mat-icon>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody  *ngFor="let cart of cartDetails">
+                        <tr *ngIf="cart.quantity>0">
+                            <td class="image" data-title="No"><img [src]='cart.prod.primaryImage' alt="#"></td>
+                            <td class="product-des" data-title="Description">
+                                <p class="product-name"><a href="#">{{cart.prod.productName}}</a></p>
+                                <p class="product-des">{{cart.prod.description}}</p>
+                            </td>
+                            <td class="price" data-title="Price"><span>${{cart.prod.price}} </span></td>
+                            <td class="qty" data-title="Qty">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="width:33.3%" ><mat-icon *ngIf="cart.quantity<cart.prod.quantity" (click)="addToCart(cart.prod)">add_circle_outline</mat-icon></td>
+                                        <td style="width:33.3%">{{cart.quantity}}</td>
+                                        <td style="width:33.3%" ><mat-icon *ngIf="cart.quantity>0" (click)="removeFromCart(cart)">remove_circle_outline</mat-icon></td>
+                                    </tr>
+                                </table>
+                                <!-- Input Order -->
+                                <!-- <div class="input-group">
+                                    <div class="button minus">
+                                        <button type="button" class="btn btn-primary btn-number" disabled="disabled"
+                                            data-type="minus" data-field="quant[1]">
+                                            <i class="ti-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" name="quant[1]" class="input-number" data-min="1" data-max="100"
+                                        value="1">
+                                    <div class="button plus">
+                                        <button type="button" class="btn btn-primary btn-number" data-type="plus"
+                                            data-field="quant[1]">
+                                            <i class="ti-plus"></i>
+                                        </button>
+                                    </div>
+                                </div> -->
+                                <!--/ End Input Order -->
+                            </td>
+                            <td class="total-amount" data-title="Total"><span>${{cart.quantity*cart.prod.price}}</span></td>
+                            <td class="action" data-title="Remove"><a >
+                                    <mat-icon class="btn-warning" (click)="removeProduct(cart)">restore_from_trash</mat-icon>
+                                </a></td>
+                        </tr>
+                       
+                        <!-- <tr>
+                            <td class="image" data-title="No"><img src="../../assets/images/513dZbDUdtL._AC_UL320_.jpg" alt="#"></td>
+                            <td class="product-des" data-title="Description">
+                                <p class="product-name"><a href="#">pTron Pride Indie in-Ear Wired Earphones</a></p>
+                                <p class="product-des">pTron Pride Indie in-Ear Wired Earphones with Mic, Stereo Sound, 10mm Drivers, Snug-fit Design, Passive Noise Cancellation, in-line Controls, Universal 3.5mm Aux & 1.2m Tange-Free Cable (Black)</p>
+                            </td>
+                            <td class="price" data-title="Price"><span>$14.00 </span></td>
+                            <td class="qty" data-title="Qty">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="width:33.3%"><mat-icon>add_circle_outline</mat-icon></td>
+                                        <td style="width:33.3%">2</td>
+                                        <td style="width:33.3%"><mat-icon>remove_circle_outline</mat-icon></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td class="total-amount" data-title="Total"><span>$28.00</span></td>
+                            <td class="action" data-title="Remove"><a href="#">
+                                    <mat-icon class="btn-warning">restore_from_trash</mat-icon>
+                                </a></td>
+                        </tr> -->
+                    </tbody>
+                </table>

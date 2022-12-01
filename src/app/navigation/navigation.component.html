@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top sticky-top ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">EagleStore</a>
+        <button class="navbar-toggler" type="button" (click)="basicNavbar.toggle()" aria-expanded="false" A
+            aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" mdbCollapse #basicNavbar="mdbCollapse">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item" *ngIf="showLoginBtn">
+                    <a class=" auth-modal-toggle btn btn-info ms-2 me-1" [ngClass]="{active: loginBtnState}"
+                        (click)="openLogin()" aria-current="page">Login</a>
+                </li>
+                <li class="nav-item" *ngIf="showSignupBtn">
+                    <a class=" auth-modal-toggle btn btn-info ms-2 me-1" [ngClass]="{active: signupBtnState}"
+                        (click)="openSignup()">Sign Up</a>
+                </li>
+                <li class="nav-item" *ngIf="showAddProductBtn">
+                    <a class=" auth-modal-toggle btn btn-info ms-2 me-1" [ngClass]="{active: viewAddProductState}"
+                        (click)="addProduct()">Add Products</a>
+                <li class="nav-item" *ngIf="showWishListBtn">
+                    <a class=" auth-modal-toggle btn btn-info ms-2 me-1" href="/viewWishlist"
+                        [ngClass]="{active: viewWishListBtn}" (click)="addProduct()">View WishList</a>
+                </li>
+                <li class="nav-item" *ngIf="showViewProductsBtn">
+                    <a class=" auth-modal-toggle btn btn-info ms-2 me-1" [ngClass]="{active: viewProductsBtnState}"
+                        (click)="viewProducts()">View Products</a>
+                </li>
+                <li class="nav-item" *ngIf="showListUsersBtn">
+                    <a class=" auth-modal-toggle btn btn-info ms-2 me-1" [ngClass]="{active: listUserBtnState}"
+                        (click)="listUsers()">List Users</a>
+                </li>
+                <li class="nav-item" *ngIf="showEditMyProfileBtn">
+                    <a class=" auth-modal-toggle btn btn-info ms-2 me-1" [ngClass]="{active: signupBtnState}"
+                        (click)="editMyProfile()">Edit My Profile</a>
+                </li>
+                <li class="nav-item" *ngIf="showViewCartBtn&&this.cartQuantity>0">
+                    <a class=" auth-modal-toggle btn btn-info ms-2 me-1" [ngClass]="{active: viewCartBtnState}"
+                        (click)="viewCart()">View Cart</a>
+                </li>
+                <li class="nav-item" *ngIf="showViewOrdersBtn">
+                    <a class=" auth-modal-toggle btn btn-info ms-2 me-1" href="/viewOrders" [ngClass]="{active: viewCartBtnState}"
+                        (click)="viewOrders()">View Orders</a>
+                </li>
+                <li class="nav-item" *ngIf="showCheckOutBtn&&this.cartQuantity>0">
+                    <a class=" auth-modal-toggle btn btn-info ms-2 me-1" [ngClass]="{active: viewCheckOutState}"
+                        href="/checkout">Checkout</a>
+                </li>
+                <li class="nav-item" *ngIf="showLogoutBtn">
+                    <a class=" auth-modal-toggle btn btn-info ms-2 me-1" [ngClass]="{active: signupBtnState}"
+                        (click)="logout()">Logout</a>
+                </li>
+
+                <!-- <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li> -->
+            </ul>
+            <!-- <form class="d-flex input-group w-auto">
+          <input type="search" class="form-control" placeholder="Type query" aria-label="Search" />
+          <button class="btn btn-outline-info" type="button">
+            Search
+          </button>
+        </form> -->
+        </div>
+    </div>
+</nav>

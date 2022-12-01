@@ -1,0 +1,96 @@
+<div class="modal-dialog-scrollable">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update My Profile</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+    </div>
+    <div class="modal-body modal-dialog-scrollable">
+        <form _ngcontent-pyw-c67 novalidate="" class="" [formGroup]="updateForm" (ngSubmit)="editProfile()">
+           
+            <!-- First Name  -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="firstName" id="formControlFirstName" type="text"
+                     aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlFirstName">First Name</label>
+
+            </mdb-form-control>
+            <div *ngIf="updateForm.controls['firstName'].touched" style="font-size: 10px;">
+                <label
+                    [ngClass]="updateForm.controls['firstName'].hasError('required') ||updateForm.controls['firstName'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                    <i class="material-icons" style="font-size: 10px;">
+                        {{
+                        updateForm.controls['firstName'].hasError('required')||updateForm.controls['firstName'].hasError('minlength')
+                        ? 'cancel' :'check_circle' }}
+                    </i>
+                    Must be atleast 1 characters long!!
+                </label><br>
+                <label
+                    [ngClass]="updateForm.controls['firstName'].hasError('required') ||updateForm.controls['firstName'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                    <i class="material-icons" style="font-size: 10px;">
+                        {{
+                        updateForm.controls['firstName'].hasError('required')||updateForm.controls['firstName'].hasError('pattern')
+                        ? 'cancel' :'check_circle' }}
+                    </i>
+                    Enter only alphabets.
+                </label>
+            </div>
+            <!-- Last Name  -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="lastName" id="formControlLastName" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlLastName">Last Name</label>
+            </mdb-form-control>
+            <div *ngIf="updateForm.controls['lastName'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="updateForm.controls['lastName'].hasError('required') ||updateForm.controls['lastName'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    updateForm.controls['lastName'].hasError('required')||updateForm.controls['lastName'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be atleast 1 characters long!!
+            </label><br>
+            <label
+                [ngClass]="updateForm.controls['lastName'].hasError('required') ||updateForm.controls['lastName'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    updateForm.controls['lastName'].hasError('required')||updateForm.controls['lastName'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only alphabets.
+            </label>
+            </div>
+            <!-- Phone Number  -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="phone" id="formControlphone" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlphone">Phone Number</label>
+            </mdb-form-control>
+            <div *ngIf="updateForm.controls['phone'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="updateForm.controls['phone'].hasError('required') ||updateForm.controls['phone'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    updateForm.controls['phone'].hasError('required')||updateForm.controls['phone'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be 10 Digits long!!
+            </label><br>
+            <label
+                [ngClass]="updateForm.controls['phone'].hasError('required') ||updateForm.controls['phone'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    updateForm.controls['phone'].hasError('required')||updateForm.controls['phone'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only Numbers and Starting with 1-9.
+            </label>
+            </div>
+            
+            
+
+            <button _ngcontent-pyw-c67="" type="submit" class="btn btn-primary btn-block mb-4 mt-4" [disabled]="!updateForm.valid"> Update </button>
+            
+        </form>
+    </div>
+
+</div> 

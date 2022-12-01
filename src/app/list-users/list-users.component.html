@@ -1,0 +1,38 @@
+<app-navigation></app-navigation>
+<div *ngIf="showUserList">
+  <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>
+          <div class="d-flex align-items-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" style="width: 45px; height: 45px"
+              class="rounded-circle" />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{user.firstName}} {{user.lastName}}</p>
+              <p class="text-muted mb-0">{{user.email}}</p>
+            </div>
+          </div>
+        </td>
+
+        <td>
+          <span class="badge badge-success rounded-pill d-inline" *ngIf="!user.isLocked">Active</span>
+        </td>
+
+        <td>
+          <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="fetchOrdrs(user)">
+            view Orders
+          </button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

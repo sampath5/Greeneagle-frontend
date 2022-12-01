@@ -1,0 +1,233 @@
+<app-navigation></app-navigation>
+<div class="offset-lg-3  col-lg-6">
+
+
+</div>
+<form _ngcontent-pyw-c67 novalidate="" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <fieldset class="form-group offset-lg-3 col-lg-6" style="text-align: center;">
+
+      <h1>Add new Item into Store</h1>
+
+      <!-- Product Name -->
+      <mdb-form-control _ngcontent-pyw-c67 class="mt-4 pl-2">
+        <input _ngcontent-ybi-c67 mdbInput class="form-control ml-3 pl-3 pr-3 mr-3" formControlName="name"
+          id="formControlnameId" placeholder="Example : abc@gmail.com" type="text" />
+        <label mdbLabel class="form-label" for="formControlnameId">Product Name</label>
+      </mdb-form-control>
+      <div *ngIf="itemForm.controls['name'].touched" style="font-size: 10px;">
+        <label
+          [ngClass]="itemForm.controls['name'].hasError('required') ||itemForm.controls['name'].hasError('name') ? 'error-label text-danger' : 'error-label text-success'">
+          <i class="material-icons" style="font-size: 10px;">
+            {{ itemForm.controls['name'].hasError('required') ||itemForm.controls['name'].hasError('name')
+            ?'cancel' :'check_circle' }}
+          </i>
+          Enter Valid Product Name
+        </label>
+      </div>
+
+      <!-- description -->
+      <mdb-form-control _ngcontent-pyw-c67 class="mt-4 pl-2">
+        <input _ngcontent-ybi-c67 mdbInput class="form-control ml-3 pl-3 pr-3 mr-3" formControlName="description"
+          id="formControldescription" type="text" />
+        <label mdbLabel class="form-label" for="formControldescription">Description</label>
+      </mdb-form-control>
+      <div *ngIf="itemForm.controls['description'].touched" style="font-size: 10px;">
+        <label
+          [ngClass]="itemForm.controls['description'].hasError('required') ||itemForm.controls['description'].hasError('description') ? 'error-label text-danger' : 'error-label text-success'">
+          <i class="material-icons" style="font-size: 10px;">
+            {{ itemForm.controls['description'].hasError('required')
+            ||itemForm.controls['description'].hasError('description')
+            ?'cancel' :'check_circle' }}
+          </i>
+          Enter valid Description
+        </label>
+      </div>
+
+      <!-- quantity -->
+      <mdb-form-control _ngcontent-pyw-c67 class="mt-4 pl-2">
+        <input _ngcontent-ybi-c67 mdbInput class="form-control ml-3 pl-3 pr-3 mr-3" formControlName="quantity"
+          id="formControlquantity" type="number" />
+        <label mdbLabel class="form-label" for="formControlquantity">Quantity</label>
+      </mdb-form-control>
+      <div *ngIf="itemForm.controls['quantity'].touched" style="font-size: 10px;">
+        <label
+          [ngClass]="itemForm.controls['quantity'].hasError('required') ||itemForm.controls['quantity'].hasError('quantity') ? 'error-label text-danger' : 'error-label text-success'">
+          <i class="material-icons" style="font-size: 10px;">
+            {{ itemForm.controls['quantity'].hasError('required')
+            ||itemForm.controls['quantity'].hasError('quantity')
+            ?'cancel' :'check_circle' }}
+          </i>
+          Enter valid Quantity
+        </label>
+      </div>
+
+      <!-- model -->
+      <mdb-form-control _ngcontent-pyw-c67 class="mt-4 pl-2">
+        <input _ngcontent-ybi-c67 mdbInput class="form-control ml-3 pl-3 pr-3 mr-3" formControlName="model"
+          id="formControlmodel" type="text" />
+        <label mdbLabel class="form-label" for="formControlmodel">model</label>
+      </mdb-form-control>
+      <div *ngIf="itemForm.controls['model'].touched" style="font-size: 10px;">
+        <label
+          [ngClass]="itemForm.controls['model'].hasError('required') ||itemForm.controls['model'].hasError('model') ? 'error-label text-danger' : 'error-label text-success'">
+          <i class="material-icons" style="font-size: 10px;">
+            {{ itemForm.controls['model'].hasError('required')
+            ||itemForm.controls['model'].hasError('model')
+            ?'cancel' :'check_circle' }}
+          </i>
+          Enter valid Model
+        </label>
+      </div>
+
+      <!-- price -->
+      <mdb-form-control _ngcontent-pyw-c67 class="mt-4 pl-2">
+        <input _ngcontent-ybi-c67 mdbInput class="form-control ml-3 pl-3 pr-3 mr-3" formControlName="price"
+          id="formControlprice" type="text" />
+        <label mdbLabel class="form-label" for="formControlprice">Price</label>
+      </mdb-form-control>
+      <div *ngIf="itemForm.controls['price'].touched" style="font-size: 10px;">
+        <label
+          [ngClass]="itemForm.controls['price'].hasError('required') ||itemForm.controls['price'].hasError('price') ? 'error-label text-danger' : 'error-label text-success'">
+          <i class="material-icons" style="font-size: 10px;">
+            {{ itemForm.controls['price'].hasError('required')
+            ||itemForm.controls['price'].hasError('price')
+            ?'cancel' :'check_circle' }}
+          </i>
+          Enter valid Price
+        </label>
+      </div>
+
+
+      <!-- category -->
+      <mdb-form-control _ngcontent-pyw-c67 class="mt-4 pl-2">
+        <input _ngcontent-ybi-c67 mdbInput class="form-control ml-3 pl-3 pr-3 mr-3" formControlName="category"
+          id="formControlcategory" type="text" />
+        <label mdbLabel class="form-label" for="formControlcategory">category</label>
+      </mdb-form-control>
+      <div *ngIf="itemForm.controls['category'].touched" style="font-size: 10px;">
+        <label
+          [ngClass]="itemForm.controls['category'].hasError('required') ||itemForm.controls['category'].hasError('category') ? 'error-label text-danger' : 'error-label text-success'">
+          <i class="material-icons" style="font-size: 10px;">
+            {{ itemForm.controls['category'].hasError('required')
+            ||itemForm.controls['category'].hasError('category')
+            ?'cancel' :'check_circle' }}
+          </i>
+          Enter valid Category
+        </label>
+      </div>
+
+      <!-- brand -->
+      <mdb-form-control _ngcontent-pyw-c67 class="mt-4 pl-2">
+        <input _ngcontent-ybi-c67 mdbInput class="form-control ml-3 pl-3 pr-3 mr-3" formControlName="brand"
+          id="formControlbrand" type="text" />
+        <label mdbLabel class="form-label" for="formControlbrand">Brand</label>
+      </mdb-form-control>
+      <div *ngIf="itemForm.controls['brand'].touched" style="font-size: 10px;">
+        <label
+          [ngClass]="itemForm.controls['brand'].hasError('required') ||itemForm.controls['brand'].hasError('brand') ? 'error-label text-danger' : 'error-label text-success'">
+          <i class="material-icons" style="font-size: 10px;">
+            {{ itemForm.controls['brand'].hasError('required')
+            ||itemForm.controls['brand'].hasError('brand')
+            ?'cancel' :'check_circle' }}
+          </i>
+          Enter valid Brand
+        </label>
+      </div>
+
+      <!-- image -->
+      <mdb-form-control _ngcontent-pyw-c67 class="mt-4 pl-2">
+        <div class="form-group col-sm-12 col-md-12">
+          <input type="file" mdbInput class="form-control btn btn-primary" (change)="fileChangeEvent($event)">
+        </div>
+        <!-- <label mdbLabel class="form-label" for="formControlimage">Image</label> -->
+      </mdb-form-control>
+      <div *ngIf="itemForm.controls['image'].touched" style="font-size: 10px;">
+        <label
+          [ngClass]="itemForm.controls['image'].hasError('required') ||itemForm.controls['image'].hasError('image') ? 'error-label text-danger' : 'error-label text-success'">
+          <i class="material-icons" style="font-size: 10px;">
+            {{ itemForm.controls['image'].hasError('required')
+            ||itemForm.controls['image'].hasError('image')
+            ?'cancel' :'check_circle' }}
+          </i>
+          Enter valid image
+        </label>
+      </div>
+
+      
+
+
+      <!-- {{imageError}} -->
+      <!-- <div class="row">
+        <div class="form-group col-sm-12 col-md-12">
+          <input type="text" class="form-control" placeholder="Name" formControlName="name" required />
+          <label *ngIf="itemForm.controls['name'].touched&&itemForm.controls['name'].hasError('required')"
+            [ngClass]="itemForm.controls['name'].hasError('required') ||itemForm.controls['name'].hasError('name') ? 'error-label text-danger' : ''">
+            <i class="material-icons">
+              {{ itemForm.controls['name'].hasError('required') ||
+              itemForm.controls['name'].hasError('name') ? 'cancel' :
+              '' }}
+            </i>
+            Enter Valid Name
+          </label>
+        </div>
+        <div class="form-group col-sm-12 col-md-12">
+          <input type="text" class="form-control" placeholder="Description" formControlName="description" required />
+          <label *ngIf="itemForm.controls['description'].touched&&itemForm.controls['description'].hasError('required')"
+            [ngClass]="itemForm.controls['description'].hasError('required') ||itemForm.controls['description'].hasError('description') ? 'error-label text-danger' : 'error-label text-success'">
+            <i class="material-icons">
+              {{ itemForm.controls['description'].hasError('required') ||
+              itemForm.controls['description'].hasError('description') ? 'cancel' :
+              'check_circle' }}
+            </i>
+            Enter Valid Description
+          </label>
+        </div>
+        <div class="form-group col-sm-12 col-md-12">
+          <input type="text" class="form-control" placeholder="Quantity" formControlName="quantity" required />
+          <label *ngIf="itemForm.controls['quantity'].touched&&itemForm.controls['quantity'].hasError('required')"
+            [ngClass]="itemForm.controls['quantity'].hasError('required') ||itemForm.controls['quantity'].hasError('quantity') ? 'error-label text-danger' : 'error-label text-success'">
+            <i class="material-icons">
+              {{ itemForm.controls['quantity'].hasError('required') ||
+              itemForm.controls['quantity'].hasError('quantity') ? 'cancel' :
+              'check_circle' }}
+            </i>
+            Enter Valid Quantity
+          </label>
+        </div>
+        <div class="form-group col-sm-12 col-md-12">
+          <input type="text" class="form-control" placeholder="Price" formControlName="price" required />
+          <label *ngIf="itemForm.controls['price'].touched&&itemForm.controls['price'].hasError('required')"
+            [ngClass]="itemForm.controls['price'].hasError('required') ||itemForm.controls['price'].hasError('price') ? 'error-label text-danger' : 'error-label text-success'">
+            <i class="material-icons">
+              {{ itemForm.controls['price'].hasError('required') ||
+              itemForm.controls['price'].hasError('price') ? 'cancel' :
+              'check_circle' }}
+            </i>
+            Enter Valid Price
+          </label>
+        </div>
+        <div class="form-group col-sm-12 col-md-12">
+          <input type="text" class="form-control" placeholder="Enter Model" formControlName="model" required />
+          <label *ngIf="itemForm.controls['model'].touched&&itemForm.controls['model'].hasError('required')"
+            [ngClass]="itemForm.controls['model'].hasError('required') ||itemForm.controls['model'].hasError('model') ? 'error-label text-danger' : 'error-label text-success'">
+            <i class="material-icons">
+              {{ itemForm.controls['model'].hasError('required') ||
+              itemForm.controls['model'].hasError('model') ? 'cancel' :
+              'check_circle' }}
+            </i>
+            Enter Valid Model
+          </label>
+        </div>
+        <div class="form-group col-sm-12 col-md-12">
+          <input type="file" class="form-control btn btn-primary" (change)="fileChangeEvent($event)">
+        </div>
+      </div> -->
+      <br>
+      <button type="submit" class="btn btn-success m-auto col-sm-3 col-md-3">Submit</button>
+    </fieldset>
+
+  </div>
+
+</form>

@@ -1,0 +1,286 @@
+<div class="modal-dialog-scrollable">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign Up </h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+    </div>
+    <div class="modal-body modal-dialog-scrollable">
+        <form _ngcontent-pyw-c67 novalidate="" class="" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+            <!-- Email Address -->
+            <mdb-form-control  _ngcontent-pyw-c67 class="mt-4 pl-2">
+                <input _ngcontent-ybi-c67 mdbInput class="form-control ml-3 pl-3 pr-3 mr-3" formControlName="email" id="formControlEmailId" placeholder="Example : abc@gmail.com"
+                    type="email" />
+                <label mdbLabel class="form-label" for="formControlEmailId">Email ID</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['email'].touched" style="font-size: 10px;">
+                <label
+                    [ngClass]="regForm.controls['email'].hasError('required') ||regForm.controls['email'].hasError('email') ? 'error-label text-danger' : 'error-label text-success'">
+                    <i class="material-icons" style="font-size: 10px;">
+                        {{ regForm.controls['email'].hasError('required') ||regForm.controls['email'].hasError('email')
+                        ?'cancel' :'check_circle' }}
+                    </i>
+                    Enter valid email address
+                </label>
+            </div>
+            <!-- First Name -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="firstName" id="formControlFirstName" type="text"
+                     aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlFirstName">First Name</label>
+
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['firstName'].touched" style="font-size: 10px;">
+                <label
+                    [ngClass]="regForm.controls['firstName'].hasError('required') ||regForm.controls['firstName'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                    <i class="material-icons" style="font-size: 10px;">
+                        {{
+                        regForm.controls['firstName'].hasError('required')||regForm.controls['firstName'].hasError('minlength')
+                        ? 'cancel' :'check_circle' }}
+                    </i>
+                    Must be atleast 1 characters long!!
+                </label><br>
+                <label
+                    [ngClass]="regForm.controls['firstName'].hasError('required') ||regForm.controls['firstName'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                    <i class="material-icons" style="font-size: 10px;">
+                        {{
+                        regForm.controls['firstName'].hasError('required')||regForm.controls['firstName'].hasError('pattern')
+                        ? 'cancel' :'check_circle' }}
+                    </i>
+                    Enter only alphabets.
+                </label>
+            </div>
+            <!-- Last Name -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="lastName" id="formControlLastName" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlLastName">Last Name</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['lastName'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['lastName'].hasError('required') ||regForm.controls['lastName'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['lastName'].hasError('required')||regForm.controls['lastName'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be atleast 1 characters long!!
+            </label><br>
+            <label
+                [ngClass]="regForm.controls['lastName'].hasError('required') ||regForm.controls['lastName'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['lastName'].hasError('required')||regForm.controls['lastName'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only alphabets.
+            </label>
+            </div>
+            <!-- Phone Number -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="phone" id="formControlphone" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlphone">Phone Number</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['phone'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['phone'].hasError('required') ||regForm.controls['phone'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['phone'].hasError('required')||regForm.controls['phone'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be 10 Digits long!!
+            </label><br>
+            <label
+                [ngClass]="regForm.controls['phone'].hasError('required') ||regForm.controls['phone'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['phone'].hasError('required')||regForm.controls['phone'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only Numbers and Starting with 1-9.
+            </label>
+            </div>
+            <!-- Apt Number -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="aptNo" id="formControlaptNo" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlaptNo">Appartment Number</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['aptNo'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['aptNo'].hasError('required') ||regForm.controls['aptNo'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['aptNo'].hasError('required')||regForm.controls['aptNo'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be Minimum 1 characters long!!
+            </label><br>
+            <!-- <label
+                [ngClass]="regForm.controls['aptNo'].hasError('required') ||regForm.controls['aptNo'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['aptNo'].hasError('required')||regForm.controls['aptNo'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only alphabets.
+            </label> -->
+            </div>
+            <!-- Street -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="street" id="formControlstreet" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlstreet">Street Name</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['street'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['street'].hasError('required') ||regForm.controls['street'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['street'].hasError('required')||regForm.controls['street'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be Minimum 3 characters long!!
+            </label><br>
+            <label
+                [ngClass]="regForm.controls['street'].hasError('required') ||regForm.controls['street'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['street'].hasError('required')||regForm.controls['street'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only alphabets.
+            </label>
+            </div>
+            <!-- City -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="city" id="formControlcity" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlcity">City Name</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['city'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['city'].hasError('required') ||regForm.controls['city'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['city'].hasError('required')||regForm.controls['city'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be Minimum 3 characters long!!
+            </label><br>
+            <label
+                [ngClass]="regForm.controls['city'].hasError('required') ||regForm.controls['city'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['city'].hasError('required')||regForm.controls['city'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only alphabets.
+            </label>
+            </div>
+            <!-- State -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="state" id="formControlstate" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlstate">State Name</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['state'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['state'].hasError('required') ||regForm.controls['state'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['state'].hasError('required')||regForm.controls['state'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be Minimum 3 characters long!!
+            </label><br>
+            <label
+                [ngClass]="regForm.controls['state'].hasError('required') ||regForm.controls['state'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['state'].hasError('required')||regForm.controls['state'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only alphabets.
+            </label>
+            </div>
+            <!-- Zip Code -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="zipcode" id="formControlzipcode" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlzipcode">ZIP Code</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['zipcode'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['zipcode'].hasError('required') ||regForm.controls['zipcode'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['zipcode'].hasError('required')||regForm.controls['zipcode'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be 5 Digits long!!
+            </label><br>
+            <label
+                [ngClass]="regForm.controls['zipcode'].hasError('required') ||regForm.controls['zipcode'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['zipcode'].hasError('required')||regForm.controls['zipcode'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only Numeric Values starting with 1-9.
+            </label>
+            </div>            
+            <!-- Password -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="password" id="formControlPassword" type="password"
+                    placeholder="lenght greated that 8, atleast 1 Numeric, 1 Uppercase, 1 Lowercase"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlPassword">Password</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['password'].touched" style="font-size: 10px;">
+                <label
+                    [ngClass]="regForm.controls['password'].hasError('required') ||regForm.controls['password'].hasError('minlength') ? 'error-label text-danger' :'error-label text-success'">
+                    <i class="material-icons" style="font-size: 10px;">
+                        {{
+                        regForm.controls['password'].hasError('required')||regForm.controls['password'].hasError('minlength')
+                        ? 'cancel' :'check_circle' }}
+                    </i>
+                    Must be at least 8 characters!
+                </label><br>
+                <label
+                    [ngClass]=" regForm.controls['password'].hasError('required') ||regForm.controls['password'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                    <i class="material-icons" style="font-size: 10px;">
+                        {{
+                        regForm.controls['password'].hasError('required')||regForm.controls['password'].hasError('pattern')
+                        ? 'cancel' :'check_circle' }}
+                    </i>
+                    include atleast 1 Capital letter,1 digit,1 special Character(#,@)!
+                </label>
+            </div>
+            <!-- Re-Enter Password -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="confirmPassword" id="formControlRePassword"
+                    type="password" placeholder="lenght greated that 8, atleast 1 Numeric, 1 Uppercase, 1 Lowercase"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlRePassword">Re-Enter Password</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['confirmPassword'].touched" style="font-size: 10px;">
+                <label
+                    [ngClass]=" regForm.controls['confirmPassword'].hasError('required') || regForm.controls['confirmPassword'].invalid ? 'error-label text-danger' :'error-label text-success'">
+                    <i class="material-icons" style="font-size: 10px;">
+                        {{
+                        regForm.controls['confirmPassword'].hasError('required')||regForm.controls['confirmPassword'].invalid
+                        ? 'cancel' :'check_circle' }}
+                    </i>
+                    Password Must Match!
+                </label>
+            </div><br>
+
+            <button _ngcontent-pyw-c67="" type="submit" class="btn btn-primary btn-block mb-4" [disabled]="!regForm.valid"> Sign Up </button>
+            <div _ngcontent-pyw-c67="" class="text-center">
+                <p _ngcontent-pyw-c67="">You are a member? <a _ngcontent-pyw-c67="" (click)="openLogin()">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+</div>

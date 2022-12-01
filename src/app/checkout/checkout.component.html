@@ -1,0 +1,232 @@
+<app-navigation></app-navigation>
+<div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10">
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+  <mat-stepper [linear]="!isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Select the Address</ng-template>
+        <br>
+        <mat-form-field appearance="fill" class="col-md-10" >
+            <mat-label>Select Delivery Address</mat-label>
+            <mat-select formControlName="firstCtrl" (selectionChange)="selectAddress()">
+                <mat-option value="">
+                    ------Select Address------
+                  </mat-option>
+              <mat-option *ngFor="let address of addresses" [value]="address.addressId">
+                {{address.aptNo}}, {{address.street}}, {{address.city}}, {{address.state}}, {{address.zip}}
+              </mat-option>
+              <mat-option value="addNewAddress">
+                Add New Address
+              </mat-option>
+              
+            </mat-select>
+          </mat-form-field>
+
+          <form _ngcontent-pyw-c67 novalidate="" *ngIf="showAddressForm" class="" [formGroup]="regForm" (ngSubmit)="addAddress(address)">
+            
+            <!-- Apt Number -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="aptNo" id="formControlaptNo" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlaptNo">Appartment Number</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['aptNo'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['aptNo'].hasError('required') ||regForm.controls['aptNo'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['aptNo'].hasError('required')||regForm.controls['aptNo'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be Minimum 1 characters long!!
+            </label><br>
+            <!-- <label
+                [ngClass]="regForm.controls['aptNo'].hasError('required') ||regForm.controls['aptNo'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['aptNo'].hasError('required')||regForm.controls['aptNo'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only alphabets.
+            </label> -->
+            </div>
+            <!-- Street -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="street" id="formControlstreet" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlstreet">Street Name</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['street'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['street'].hasError('required') ||regForm.controls['street'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['street'].hasError('required')||regForm.controls['street'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be Minimum 3 characters long!!
+            </label><br>
+            <label
+                [ngClass]="regForm.controls['street'].hasError('required') ||regForm.controls['street'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['street'].hasError('required')||regForm.controls['street'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only alphabets.
+            </label>
+            </div>
+            <!-- City -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="city" id="formControlcity" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlcity">City Name</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['city'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['city'].hasError('required') ||regForm.controls['city'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['city'].hasError('required')||regForm.controls['city'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be Minimum 3 characters long!!
+            </label><br>
+            <label
+                [ngClass]="regForm.controls['city'].hasError('required') ||regForm.controls['city'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['city'].hasError('required')||regForm.controls['city'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only alphabets.
+            </label>
+            </div>
+            <!-- State -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="state" id="formControlstate" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlstate">State Name</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['state'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['state'].hasError('required') ||regForm.controls['state'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['state'].hasError('required')||regForm.controls['state'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be Minimum 3 characters long!!
+            </label><br>
+            <label
+                [ngClass]="regForm.controls['state'].hasError('required') ||regForm.controls['state'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['state'].hasError('required')||regForm.controls['state'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only alphabets.
+            </label>
+            </div>
+            <!-- Zip Code -->
+            <mdb-form-control class="mt-4">
+                <input mdbInput class="form-control" formControlName="zip" id="formControlzip" type="text"
+                    aria-label="readonly input example" [readonly]="false" />
+                <label mdbLabel class="form-label" for="formControlzip">ZIP Code</label>
+            </mdb-form-control>
+            <div *ngIf="regForm.controls['zip'].touched" style="font-size: 10px;">
+                <label
+                [ngClass]="regForm.controls['zip'].hasError('required') ||regForm.controls['zip'].hasError('minlength') ? 'error-label text-danger' : 'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['zip'].hasError('required')||regForm.controls['zip'].hasError('minlength')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Must be 5 Digits long!!
+            </label><br>
+            <label
+                [ngClass]="regForm.controls['zip'].hasError('required') ||regForm.controls['zip'].hasError('pattern') ? 'error-label text-danger' :'error-label text-success'">
+                <i class="material-icons" style="font-size: 10px;">
+                    {{
+                    regForm.controls['zip'].hasError('required')||regForm.controls['zip'].hasError('pattern')
+                    ? 'cancel' :'check_circle' }}
+                </i>
+                Enter only Numeric Values starting with 1-9.
+            </label>
+            </div>            
+            
+            <button _ngcontent-pyw-c67="" matStepperNext type="submit" class="btn btn-primary btn-block mb-4" [disabled]="!regForm.valid"> Next </button>
+            
+        </form>
+        <!-- <div>
+          <button mat-button matStepperNext [disabled]="!regForm.valid" (onClick)="addAddress()" *ngIf="regForm.valid" >Next</button>
+        </div> -->
+      </form>
+    </mat-step>
+    <mat-step label="Review Your Order" >
+      <form [formGroup]="secondFormGroup">
+        <section class="section-content padding-y">
+            <div class="container">
+                <div class="row">
+                    <main class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3" *ngFor="let cart of cartDetails">
+                                <figure class="card card-product-grid">
+                                    <div class="img-wrap">
+                                        <!-- <span><i class="fa fa-heart fa-2x" *ngIf="!checkAuth.isAdmin()"
+                                                (click)="addToWishList(cart.prod)" aria-hidden="true"></i></span> -->
+                                        <img [src]="cart.prod.primaryImage">
+                                    </div>
+                                    <figcaption class="info-wrap">
+                                        <div class="fix-height">
+                                            <a class="title"
+                                                (click)="openProduct(cart.prod)">{{cart.prod.productName.substr(0,35)}}...</a>
+                                            <div class="price-wrap mt-2">
+                                                Price : <span class="price">$ {{cart.prod.price}} </span><br>
+                                                Quantity: <span > {{cart.quantity}}</span><br>
+                                                Total Price : <span class="price">$ {{cart.prod.price*cart.quantity}} </span><br>
+                                            </div>
+                                        </div>
+                                        
+                                    </figcaption>
+                                </figure>
+                            </div>
+        
+                        </div> <!-- row end.// -->
+                    </main> <!-- col.// -->
+                </div>
+            </div> <!-- container .//  -->
+        </section>
+        <!-- <button _ngcontent-pyw-c67="" class="btn btn-block mb-4" >Address : {{this.showAddress}} </button> -->
+        
+        <mat-form-field appearance="fill" class="col-md-10">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" *ngIf="true" [disabled]="true" class="text-block md-4" [readonly]="true" placeholder="Address"
+                 required>
+                 <!-- <button _ngcontent-pyw-c67="" formControlName="secondCtrl" class="btn btn-block mb-4" >Address : {{this.showAddress}} </button> -->
+        
+        <!-- <button _ngcontent-pyw-c67="" [disabled]="true" class="btn btn-info mb-4" > {{this.showAddress}} </button> -->
+        
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext class="btn btn-primary" >Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Payment</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+        <button _ngcontent-pyw-c67="" matStepperNext type="submit" class="btn btn-primary btn-block mb-4" (click)="payment()"> Proceed To Pay Amount $ {{totalPrice}} </button>
+            
+      </div>
+    </mat-step>
+  </mat-stepper>
+  
+  </div>

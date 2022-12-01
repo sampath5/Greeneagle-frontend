@@ -1,0 +1,41 @@
+<app-navigation></app-navigation>
+<div class="offset-md-1 offset-lg-1 col-md-10 col-lg-10 ">
+<div class="card card-product-list bg-light mt-2 m-2" *ngFor="let wish of wishList" >
+    <div class="row no-gutters ">
+        <aside class="col-md-3">
+            <a class="img-wrap" >
+                
+                <img class="card-image" (click)="openProduct(wish.wishlistId)" [src]="wish.product.primaryImage">
+            </a>
+        </aside>
+        <div class="col-md-6">
+            <div class="info-main">
+                <a class="h5 title" (click)="openProduct(wish.product)"> {{wish.product.productName}}</a>
+                <div class="rating-wrap mb-3">
+                </div> 
+
+                <p>{{wish.product.description}}</p>
+            </div>
+        </div> 
+        <aside class="col-sm-3">
+            <div class="info-aside">
+                <div class="price-wrap">
+                    <span class="price h5"> ${{wish.product.price}}</span>
+                    <del class="price-old"> ${{wish.product.price*1.2|number : '1.2-2'}}</del>
+                </div> 
+                <p class="text-success">Free shipping</p>
+                <br>
+                <p>
+                    <a href="#" class="btn btn-danger btn-block" *ngIf="checkAuthService.isAdmin()&&product.active" (click)="makeInActivate(wish.product)">Make InActive</a>
+                    <a href="#" class="btn btn-success btn-block" *ngIf="checkAuthService.isAdmin()&&!product.active" (click)="makeActivate(wish.product)"> {{wish.product.active}} Make Active</a>
+                    
+                    <a href="" class="btn btn-primary btn-block" *ngIf="!checkAuthService.isAdmin()" (click)="addToCart(wish.product)"> Add To Cart </a>
+                    <a (click)="removeFromWishList(wish)" class="btn btn-warning btn-block" *ngIf="!checkAuthService.isAdmin()" ><i class="fa fa-heart"></i>
+                        <span class="text">Remove From wishlist</span>
+                    </a>
+                </p>
+            </div> 
+        </aside> 
+    </div> 
+</div>
+</div>
