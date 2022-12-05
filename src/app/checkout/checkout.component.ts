@@ -118,7 +118,7 @@ export class CheckoutComponent implements OnInit {
     this.userService.payment(this.checkAuth.getToken(),this.addressId).subscribe(res=>{
       console.log(res.link)
       var data=res.link
-      // window.location.href = data.toString()
+      window.location.href = data.toString()
     },error=>{
       console.log(error)
     })
