@@ -149,12 +149,14 @@ export class NavigationComponent implements OnInit {
       this.loginBtnState = false
       if (localStorage.getItem('jwt').length > 0) {
         this.ngOnInit()
+        this.returnUrl="viewProducts";
         let params = this.route.snapshot.queryParams;
         if (params['redirectURL']) {
+          this.returnUrl="";
           this.returnUrl = params['redirectURL'];
         }
         this.router.navigateByUrl(this.returnUrl)
-        window.location.href="https://eaglestore-frontend.herokuapp.com/"+this.returnUrl
+        // window.location.href="https://eaglestore-frontend.herokuapp.com/"+this.returnUrl
       }
     })
 
@@ -190,7 +192,7 @@ export class NavigationComponent implements OnInit {
     localStorage.clear();
     this.ngOnInit();
     this.router.navigate(['/']);
-    window.location.href="https://eaglestore-frontend.herokuapp.com"
+    // window.location.href="https://eaglestore-frontend.herokuapp.com"
   }
 
 
