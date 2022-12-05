@@ -21,7 +21,8 @@ export const Constants = {
             "payment":"https://eaglestore-frontend.herokuapp.com/pay/",
             "paypalSuccess":"https://eaglestore-frontend.herokuapp.com/paypal/success",
             "getorders":"https://eaglestore-frontend.herokuapp.com/getorders",
-            "cancelOrder":"https://eaglestore-frontend.herokuapp.com/cancelorder"
+            "cancelOrder":"https://eaglestore-frontend.herokuapp.com/cancelorder",
+            "viewUserTransactions":"https://eaglestore-frontend.herokuapp.com/userTransactions"
         },
         "admin": {
             "getUsersList": "https://eaglestore-frontend.herokuapp.com/admin/getusers",
@@ -30,7 +31,8 @@ export const Constants = {
             "getProductById": "https://eaglestore-frontend.herokuapp.com/admin/getproduct/",
             "activateProduct":"https://eaglestore-frontend.herokuapp.com/admin/activateProduct/",
             "inActivateProduct":"https://eaglestore-frontend.herokuapp.com/admin/inActivateProduct/",
-            "getOrdersByUserId":"https://eaglestore-frontend.herokuapp.com/admin/getOrders/"
+            "getOrdersByUserId":"https://eaglestore-frontend.herokuapp.com/admin/getOrders/",
+            "viewUserTransactions":"https://eaglestore-frontend.herokuapp.com/admin/userTransactions/"
         }
     }
 }
