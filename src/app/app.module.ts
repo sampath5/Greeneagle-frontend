@@ -48,6 +48,7 @@ import { ViewWishlistComponent } from './view-wishlist/view-wishlist.component'
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PaypalComponent } from './paypal/paypal.component';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { ViewOrdersComponent } from './view-orders/view-orders.component';
     MatButtonModule,
     MatStepperModule,
     MatSelectModule,
+    MatTabsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSnackBarModule,

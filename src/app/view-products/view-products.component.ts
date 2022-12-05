@@ -19,7 +19,7 @@ export class ViewProductsComponent implements OnInit {
   products: Product[]
   constructor(
     private productService: ProductService,
-    private checkAuthService: GuardGuard,
+    public checkAuthService: GuardGuard,
     private sanitizer: DomSanitizer,
     private toast: ToastrService,
     public router: Router

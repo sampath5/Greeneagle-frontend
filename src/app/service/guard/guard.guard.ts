@@ -73,6 +73,12 @@ export class GuardGuard implements CanActivate {
       return false
     }
   }
+  isLogin(){
+    if(localStorage.length>0){
+      return true
+    }
+    return false
+  }
   logout(): void {
     localStorage.clear()
   }

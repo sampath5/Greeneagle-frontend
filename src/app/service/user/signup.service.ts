@@ -10,6 +10,7 @@ import { User } from '../../model/user.model';
 import { Observable } from 'rxjs';
 import { Address } from 'src/app/model/address.model';
 import { UserOrders } from 'src/app/model/userOrders.model';
+import { UserTransaction } from 'src/app/model/userTransactions.module';
 @Injectable({
   providedIn: 'root'
 })
@@ -91,6 +92,18 @@ export class UserService {
 
   cancelOrders(token,cancel){
     return this.http.post<any>(Constants.endPoint.user.cancelOrder,cancel, {
+      headers: { 'Authorization': token }
+    })
+  }
+
+  viewUserTransactions(token){
+    return this.http.get<UserTransaction[]>(Constants.endPoint.user.viewUserTransactions,{
+      headers: { 'Authorization': token }
+    })
+  }
+
+  viewUserTransactionsById(token,id){
+    return this.http.get<UserTransaction[]>(Constants.endPoint.admin.viewUserTransactions+id,{
       headers: { 'Authorization': token }
     })
   }

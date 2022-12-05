@@ -8,7 +8,8 @@ export class UserOrders {
         public orderedDate: Date,
         public address: Address,
         public productList: Orders[],
-        public status: boolean
+        public status: boolean,
+        public quantity : number
     ) {
     }
 }

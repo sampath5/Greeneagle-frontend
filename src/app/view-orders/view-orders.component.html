@@ -1,46 +1,119 @@
 <app-navigation></app-navigation>
-<div *ngIf="userOrders==undefined" class="mt-4"><h3>No Orders Found</h3></div>
-<mat-vertical-stepper [linear]="false" #stepper [animationDuration]="500" *ngIf="userOrders!=undefined" >
-    <mat-step [stepControl]="firstFormGroup" *ngFor="let userOrder of userOrders">
-        <ng-template matStepLabel *ngIf="userOrder.status">Ordered On {{userOrder.orderedDate | date :'medium'}}</ng-template>
 
-        <section class="section-content padding-y"  *ngIf="userOrder.status">
-            <div class="container">
-                <div class="row">
-                    <main class="col-md-12">
-                        <button class="btn btn-danger" (click)="cancelOrder(userOrder)">Cancel Order</button>
+<mat-tab-group dynamicHeight    >
+    <mat-tab label="Orders">
+        <div *ngIf="userOrders==undefined" class="mt-4">
+            <h3>No Orders Found</h3>
+        </div>
+        <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="500" *ngIf="userOrders!=undefined">
+            <mat-step [stepControl]="firstFormGroup" *ngFor="let userOrder of userOrders">
+                <ng-template matStepLabel *ngIf="userOrder.status">Ordered On {{userOrder.orderedDate | date :'medium'}}
+                </ng-template>
+
+                <section class="section-content padding-y" *ngIf="userOrder.status">
+                    <div class="container">
                         <div class="row">
-                                <!-- {{products.product.productName}} -->
+                            <main class="col-md-12">
+                                <button class="btn btn-danger" (click)="cancelOrder(userOrder)">Cancel Order</button>
+                                <div class="row">
+                                    <!-- {{products.product.productName}} -->
 
-                                <div class="col-md-3" *ngFor="let products of userOrder.productList">
-                                    <figure class="card card-product-grid">
-                                        <div class="img-wrap">
-                                            <!-- <span><i class="fa fa-heart fa-2x" *ngIf="!checkAuth.isAdmin()"
-                                                (click)="addToWishList(product)" aria-hidden="true"></i></span> -->
-                                            <img [src]="products.product.primaryImage">
-                                        </div>
-                                        <figcaption class="info-wrap">
-                                            <div class="fix-height">
-                                                <a class="title"
-                                                    (click)="openProduct(products.product)">{{products.product.productName.substr(0,35)}}...</a>
-                                                <div class="price-wrap mt-2">
-                                                    Price : <span class="price">$ {{products.product.price}} </span><br>
-                                                    Quantity: <span> {{products.quantity}}</span><br>
-                                                    Total Price : <span class="price">$
-                                                        {{products.product.price*products.quantity}}
-                                                    </span><br>
-                                                </div>
+                                    <div class="col-md-3" *ngFor="let products of userOrder.productList">
+                                        <figure class="card card-product-grid">
+                                            <div class="img-wrap">
+                                                <!-- <span><i class="fa fa-heart fa-2x" *ngIf="!checkAuth.isAdmin()"
+                                                        (click)="addToWishList(product)" aria-hidden="true"></i></span> -->
+                                                <img [src]="products.product.primaryImage">
                                             </div>
+                                            <figcaption class="info-wrap">
+                                                <div class="fix-height">
+                                                    <a class="title"
+                                                        (click)="openProduct(products.product)">{{products.product.productName.substr(0,35)}}...</a>
+                                                    <div class="price-wrap mt-2">
+                                                        Price : <span class="price">$ {{products.product.price}}
+                                                        </span><br>
+                                                        Quantity: <span> {{products.quantity}}</span><br>
+                                                        Total Price : <span class="price">$
+                                                            {{products.product.price*products.quantity}}
+                                                        </span><br>
+                                                    </div>
+                                                </div>
 
-                                        </figcaption>
-                                    </figure>
-                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
 
-                        </div> <!-- row end.// -->
-                    </main> <!-- col.// -->
-                </div>
-            </div> <!-- container .//  -->
-        </section>
+                                </div> <!-- row end.// -->
+                            </main> <!-- col.// -->
+                        </div>
+                    </div> <!-- container .//  -->
+                </section>
 
-        <!-- <button mat-button matStepperPrevious>Back</button> -->
-    </mat-step>
+                <!-- <button mat-button matStepperPrevious>Back</button> -->
+            </mat-step>
+        </mat-vertical-stepper>
+    </mat-tab>
+    <mat-tab label="Transactions"> 
+        <div >
+            <table class="table align-middle mb-0 bg-white">
+              <thead class="bg-light">
+                <tr>
+                  <th>Invioce Id</th>
+                  <th>Number of Products</th>
+                  <th>Amount</th>
+                  <th>Payment Status</th>
+                  <th>Transaction Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let userTransaction of userTransactions">
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <!-- <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" style="width: 45px; height: 45px"
+                        class="rounded-circle" /> -->
+                      <div class="">
+                        <p class="fw-bold mb-1">{{userTransaction.invoiceId}}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <!-- <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" style="width: 45px; height: 45px"
+                        class="rounded-circle" /> -->
+                      <div class="">
+                        <p class="fw-bold mb-1">{{userTransaction.productQuantity}}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <!-- <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" style="width: 45px; height: 45px"
+                        class="rounded-circle" /> -->
+                      <div class="">
+                        <p class="fw-bold mb-1">$ {{userTransaction.amount}} USD</p>
+                      </div>
+                    </div>
+                  </td>
+          
+                  <td>
+                    <span class="badge badge-success rounded-pill d-inline" *ngIf="userTransaction.paymentStatus">Success</span>
+                    <span class="badge badge-danger rounded-pill d-inline" *ngIf="!userTransaction.paymentStatus">Failed</span>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <!-- <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" style="width: 45px; height: 45px"
+                        class="rounded-circle" /> -->
+                      <div class="">
+                        <p class="fw-bold mb-1">{{userTransaction.transactionDate| date :'medium'}}</p>
+                      </div>
+                    </div>
+                  </td>
+          
+                  
+                </tr>
+          
+              </tbody>
+            </table>
+          </div>
+    </mat-tab>
+</mat-tab-group>
