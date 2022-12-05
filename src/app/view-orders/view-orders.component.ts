@@ -51,14 +51,15 @@ export class ViewOrdersComponent implements OnInit {
         this.userService.getOrdersByUserId(this.authCheck.getToken(), this.activatedRoute.snapshot.params['id']).subscribe(res => {
           this.viewUserTransactionsById(this.activatedRoute.snapshot.params['id']);
           res.forEach(data => {
-            if (data.status) {
-              this.userOrders.push(data)
-            }
+            // if (data.status) {
+            //   this.userOrders.push(data)
+            // }
             data.productList.forEach(da => {
               let objectURL = 'data:image/jpeg;base64,' + da.product.primaryImage;
               da.product.primaryImage = this.sanitizer.bypassSecurityTrustUrl(objectURL)
             })
           })
+          this.userOrders=res
           console.log(this.userOrders)
         }, error => {
           console.log(error)
