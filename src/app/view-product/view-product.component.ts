@@ -28,50 +28,55 @@ export class ViewProductComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getCartCount()
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.productId = params['productId'];
-      if (this.productId != undefined) {
-        if (this.checkAuthorization.isAdmin()) {
-          this.productService.getProductForAdmin(this.checkAuthorization.getToken(), this.productId).subscribe(res => {
-            this.product = res
-            let objectURL = 'data:image/jpeg;base64,' + this.product.primaryImage;
-            this.product.primaryImage = this.sanitizer.bypassSecurityTrustUrl(objectURL)
-
-            console.log(res)
-          }, error => {
-
-          })
-        } else {
-          this.productService.getProductById(this.checkAuthorization.getToken(), this.productId).subscribe(res=>{
-            let objectURL = 'data:image/jpeg;base64,' + res.primaryImage;
-            res.primaryImage = this.sanitizer.bypassSecurityTrustUrl(objectURL)
-            this.product=res
-          },error=>{
-
-          })
-          this.productService.getCartDetails(this.checkAuthorization.getToken()).subscribe(res => {
-            console.log()
-            res.forEach(cart => {
-              if (cart.prod.productId == this.productId) {
-
-                if (cart.prod.quantity <= cart.quantity) {
-                  cart.prod.active = false
-                } else {
-                  cart.prod.active = true
-                }
-                this.product = cart.prod
-                console.log(cart.prod)
-                let objectURL = 'data:image/jpeg;base64,' + this.product.primaryImage;
-                this.product.primaryImage = this.sanitizer.bypassSecurityTrustUrl(objectURL)
-              }
+    if(this.checkAuthorization.isLogin()){
+      this.activatedRoute.params.subscribe((params: Params) => {
+        this.productId = params['productId'];
+        if (this.productId != undefined) {
+          if (this.checkAuthorization.isAdmin()) {
+            this.productService.getProductForAdmin(this.checkAuthorization.getToken(), this.productId).subscribe(res => {
+              this.product = res
+              let objectURL = 'data:image/jpeg;base64,' + this.product.primaryImage;
+              this.product.primaryImage = this.sanitizer.bypassSecurityTrustUrl(objectURL)
+  
+              console.log(res)
+            }, error => {
+  
             })
-          }, error => {
-            console.log(error)
-          })
+          } else {
+            this.productService.getProductById(this.checkAuthorization.getToken(), this.productId).subscribe(res=>{
+              let objectURL = 'data:image/jpeg;base64,' + res.primaryImage;
+              res.primaryImage = this.sanitizer.bypassSecurityTrustUrl(objectURL)
+              this.product=res
+            },error=>{
+  
+            })
+            this.productService.getCartDetails(this.checkAuthorization.getToken()).subscribe(res => {
+              console.log()
+              res.forEach(cart => {
+                if (cart.prod.productId == this.productId) {
+  
+                  if (cart.prod.quantity <= cart.quantity) {
+                    cart.prod.active = false
+                  } else {
+                    cart.prod.active = true
+                  }
+                  this.product = cart.prod
+                  console.log(cart.prod)
+                  let objectURL = 'data:image/jpeg;base64,' + this.product.primaryImage;
+                  this.product.primaryImage = this.sanitizer.bypassSecurityTrustUrl(objectURL)
+                }
+              })
+            }, error => {
+              console.log(error)
+            })
+          }
         }
-      }
-    })
-    this.getCartDetails()
+      })
+      this.getCartDetails()
+    }else{
+      window.location.href='https://eaglestore-frontend.herokuapp.com/';
+    }
+    
   }
 
   addToCart(product: Product) {

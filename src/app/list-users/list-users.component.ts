@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../model/user.model';
 import { Users } from '../model/users.model';
+import { GuardGuard } from '../service/guard/guard.guard';
 import { UserService } from '../service/user/signup.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class ListUsersComponent implements OnInit {
     private userService: UserService,
     private toast: ToastrService,
     public router: Router,
+    public auth:GuardGuard
   ) {
     if (localStorage.getItem('role').toString() == "ADMIN") {
       this.showUserList = true
@@ -49,6 +51,23 @@ export class ListUsersComponent implements OnInit {
   getUserDetails(token){
     this.userService.getUserDetails(token).subscribe(data => {
       console.log(data)
+    })
+  }
+
+  enableUser(user:Users){
+    console.log(user)
+    this.userService.activateUser(this.auth.getToken(),user.userId).subscribe(res=>{      
+      this.getUsersList(this.auth.getToken());
+    },error=>{
+
+    })
+  }
+
+  disableUser(user:Users){
+    this.userService.inActivateUser(this.auth.getToken(),user.userId).subscribe(res=>{      
+      this.getUsersList(this.auth.getToken());
+    },error=>{
+
     })
   }
 }

@@ -107,4 +107,15 @@ export class UserService {
       headers: { 'Authorization': token }
     })
   }
+  inActivateUser(token,id){
+    return this.http.post<User>(Constants.endPoint.admin.inActivateUser+id,null,{
+      headers: { 'Authorization': token }
+    })
+  }
+
+  activateUser(token,id){
+    return this.http.post<User>(Constants.endPoint.admin.activateUser+id,null,{
+      headers: { 'Authorization': token }
+    })
+  }
 }

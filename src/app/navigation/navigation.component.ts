@@ -154,6 +154,7 @@ export class NavigationComponent implements OnInit {
           this.returnUrl = params['redirectURL'];
         }
         this.router.navigateByUrl(this.returnUrl)
+        window.location.href="https://eaglestore-frontend.herokuapp.com/"+this.returnUrl
       }
     })
 
@@ -189,6 +190,7 @@ export class NavigationComponent implements OnInit {
     localStorage.clear();
     this.ngOnInit();
     this.router.navigate(['/']);
+    window.location.href="https://eaglestore-frontend.herokuapp.com"
   }
 
 

@@ -32,7 +32,9 @@ export const Constants = {
             "activateProduct":"https://eaglestore-server.herokuapp.com/admin/activateProduct/",
             "inActivateProduct":"https://eaglestore-server.herokuapp.com/admin/inActivateProduct/",
             "getOrdersByUserId":"https://eaglestore-server.herokuapp.com/admin/getOrders/",
-            "viewUserTransactions":"https://eaglestore-server.herokuapp.com/admin/userTransactions/"
+            "viewUserTransactions":"https://eaglestore-server.herokuapp.com/admin/userTransactions/",
+            "inActivateUser":"https://eaglestore-server.herokuapp.com/admin/inActivateUser/",
+            "activateUser":"https://eaglestore-server.herokuapp.com/admin/activateUser/"
         }
     }
 }
