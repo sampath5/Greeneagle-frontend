@@ -35,15 +35,16 @@ export class ViewOrdersComponent implements OnInit {
         this.viewUserTransactions()
         this.userService.getOrders(this.authCheck.getToken()).subscribe(res => {
           res.forEach(data => {
-            if (data.status) {
-              this.userOrders.push(data)
-            }
+            // if (data.status) {
+            //   this.userOrders.push(data)
+            // }
             data.productList.forEach(da => {
               let objectURL = 'data:image/jpeg;base64,' + da.product.primaryImage;
               da.product.primaryImage = this.sanitizer.bypassSecurityTrustUrl(objectURL)
             })
           })
-          console.log(this.userOrders)
+          this.userOrders=res
+          // console.log(this.userOrders)
         }, error => {
           console.log(error)
         })
@@ -60,7 +61,7 @@ export class ViewOrdersComponent implements OnInit {
             })
           })
           this.userOrders=res
-          console.log(this.userOrders)
+          // console.log(this.userOrders)
         }, error => {
           console.log(error)
         })
