@@ -44,7 +44,7 @@ export class ViewOrdersComponent implements OnInit {
             })
           })
           this.userOrders=res
-          // console.log(this.userOrders)
+          console.log(this.userOrders)
         }, error => {
           console.log(error)
         })
@@ -61,7 +61,7 @@ export class ViewOrdersComponent implements OnInit {
             })
           })
           this.userOrders=res
-          // console.log(this.userOrders)
+          console.log(this.userOrders)
         }, error => {
           console.log(error)
         })
