@@ -10,7 +10,8 @@ export class User {
         public city: string,
         public state: string,
         public zipcode: string,
-        public isLocked: boolean
+        public isLocked: boolean,
+        public locked:boolean
     ) {
     }
 }

@@ -27,7 +27,7 @@ export class EditProfileComponent implements OnInit {
     private checkAuthorization:GuardGuard,
     private toast: ToastrService
   ) {
-    this.user = new User("", "", "", "", "", "", "", "", "", "", false);
+    this.user = new User("", "", "", "", "", "", "", "", "", "", false,false);
     var token = "Bearer " + localStorage.getItem('jwt')
     this.getUserDetails(token)
     this.userService.validateUser(token).then(res => {
