@@ -104,5 +104,17 @@ export class ViewProductsComponent implements OnInit {
   openProduct(product:Product){    
     this.router.navigate(['viewProduct/'+product.productId]);
   }
+
+  onKey(event: any) {
+    // without type info
+    var value= event.target.value;
+    this.products=this.products.filter(p=>{
+      // p.includes(value)
+      p.productName.toLocaleLowerCase().includes(value)
+      // p.productName.search
+      // p.productName.search(value)
+    })
+    console.log(this.products)
+  }
   
 }
